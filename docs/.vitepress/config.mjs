@@ -9,7 +9,7 @@ const sideBar = JSON.parse(fs.readFileSync("docs/api-doc/sidebar.json", "utf-8")
 export default defineConfig({
   title: "FineNurse API",
   description: "A FineNurse Documentaion",
-  base: "/finenurse-doc",
+  base: "/finenurse-wy-doc",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {

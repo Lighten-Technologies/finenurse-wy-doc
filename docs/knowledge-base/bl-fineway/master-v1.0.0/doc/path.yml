@@ -1,7 +1,6 @@
-
 endpoints:
   - method: GET
-    path: "/path"
+    path: "/api/lighten/fineway/v1/path"
     name: "FineWay API 경로 목록 조회"
     description: "서버에 정의된 FineWay API 경로 목록을 조회하여 반환합니다."
     request: {}

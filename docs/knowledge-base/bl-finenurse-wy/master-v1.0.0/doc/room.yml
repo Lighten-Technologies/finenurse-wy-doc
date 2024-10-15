@@ -1,0 +1,178 @@
+endpoints:
+  - method: GET
+    path: "/api/lighten/finenurse-wy/v1/room"
+    name: "병실 목록 조회"
+    description: "병실 목록을 ID 또는 병동 이름으로 조회합니다."
+    request:
+      requestParams:
+        _id:
+          type: string
+          m/o: optional
+          description: "병실의 고유 ID"
+        ward:
+          type: string
+          m/o: optional
+          description: "병실이 속한 병동 이름"
+    response:
+      success: |
+        병실 목록을 성공적으로 반환합니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "success",
+          data: [ 병실 목록 ]
+        }
+        ```
+      fail: |
+        요청 실패 시 오류 메시지를 반환합니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "요청 실패",
+          data: []
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/finenurse-wy/v1/room"
+    name: "병실 등록"
+    description: "새로운 병실을 등록합니다."
+    request:
+      requestHeaders:
+        editor:
+          type: string
+          m/o: mandatory
+          description: "수정자 정보"
+      requestBody:
+        roomName:
+          type: string
+          m/o: mandatory
+          description: "병실 이름"
+        wardName:
+          type: string
+          m/o: mandatory
+          description: "병동 이름"
+        bedList:
+          type: array
+          m/o: optional
+          description: "병실에 있는 침대 목록"
+        roomType:
+          type: string
+          m/o: optional
+          description: "병실 타입"
+        isValid:
+          type: string
+          m/o: optional
+          description: "병실 유효성 (1: 유효, 0: 무효)"
+    response:
+      success: |
+        병실이 성공적으로 등록되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Creation Success",
+          data: [ 등록된 병실 정보 ]
+        }
+        ```
+      fail: |
+        병실 등록에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Creation Failed",
+          data: {}
+        }
+        ```
+
+  - method: PUT
+    path: "/api/lighten/finenurse-wy/v1/room"
+    name: "병실 정보 수정"
+    description: "기존 병실 정보를 수정합니다."
+    request:
+      requestHeaders:
+        editor:
+          type: string
+          m/o: mandatory
+          description: "수정자 정보"
+      requestBody:
+        _id:
+          type: string
+          m/o: mandatory
+          description: "병실의 고유 ID"
+        roomName:
+          type: string
+          m/o: optional
+          description: "병실 이름"
+        wardName:
+          type: string
+          m/o: optional
+          description: "병동 이름"
+        bedList:
+          type: array
+          m/o: optional
+          description: "병실에 있는 침대 목록"
+        roomType:
+          type: string
+          m/o: optional
+          description: "병실 타입"
+        isValid:
+          type: string
+          m/o: optional
+          description: "병실 유효성 (1: 유효, 0: 무효)"
+    response:
+      success: |
+        병실 정보가 성공적으로 수정되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Updated",
+          data: [ 수정된 병실 정보 ]
+        }
+        ```
+      fail: |
+        병실 정보 수정에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Update Failed",
+          data: {}
+        }
+        ```
+
+  - method: DELETE
+    path: "/api/lighten/finenurse-wy/v1/room"
+    name: "병실 삭제"
+    description: "기존 병실을 삭제합니다."
+    request:
+      requestBody:
+        _id:
+          type: string
+          m/o: optional
+          description: "병실의 고유 ID"
+        roomName:
+          type: string
+          m/o: optional
+          description: "병실 이름"
+        wardName:
+          type: string
+          m/o: optional
+          description: "병동 이름"
+    response:
+      success: |
+        병실이 성공적으로 삭제되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Deleted",
+          data: {}
+        }
+        ```
+      fail: |
+        병실 삭제에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Room Delete Failed",
+          data: {}
+        }
+        ```

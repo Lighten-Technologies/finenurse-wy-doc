@@ -1,0 +1,80 @@
+endpoints:
+  - method: POST
+    path: "/api/lighten/finenurse-wy/v1/auth/login"
+    name: "로그인"
+    description: "사용자가 로그인 정보를 입력하여 인증을 진행합니다."
+    request:
+      requestBody:
+        id:
+          type: string
+          m/o: mandatory
+          description: "사용자의 로그인 ID"
+        password:
+          type: string
+          m/o: mandatory
+          description: "사용자의 로그인 비밀번호"
+        ipa:
+          type: string
+          m/o: optional
+          description: "로그인 시도의 IP 주소"
+    response:
+      success: |
+        사용자가 성공적으로 로그인했을 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Login Success",
+          data: { 사용자 정보 }
+        }
+        ```
+      fail: |
+        사용자가 로그인에 실패했을 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "로그인 실패 이유",
+          data: {}
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/finenurse-wy/v1/auth/register"
+    name: "회원가입"
+    description: "새로운 사용자가 회원가입을 진행합니다."
+    request:
+      requestBody:
+        id:
+          type: string
+          m/o: mandatory
+          description: "사용자의 ID"
+        password:
+          type: string
+          m/o: mandatory
+          description: "사용자의 비밀번호"
+        name:
+          type: string
+          m/o: mandatory
+          description: "사용자의 이름"
+        ward:
+          type: string
+          m/o: optional
+          description: "사용자가 속한 병동 (optional)"
+    response:
+      success: |
+        사용자가 성공적으로 회원가입을 완료했을 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Member Registered Successfully",
+          data: {}
+        }
+        ```
+      fail: |
+        회원가입에 실패했을 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Member Registration Failed",
+          data: {}
+        }
+        ```

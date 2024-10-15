@@ -2,9 +2,9 @@
 outline: deep
 ---
 
-# FineNurse API
+# FineNurse-WY API
 
-FineNurse API 문서입니다.
+FineNurse-WY API 문서입니다.
 
 ## How to use
 

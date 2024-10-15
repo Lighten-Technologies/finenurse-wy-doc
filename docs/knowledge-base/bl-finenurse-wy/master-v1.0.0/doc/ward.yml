@@ -1,0 +1,158 @@
+endpoints:
+  - method: GET
+    path: "/api/lighten/finenurse-wy/v1/ward"
+    name: "병동 목록 조회"
+    description: "병동 이름 또는 병동 코드를 기준으로 병동 목록을 조회합니다."
+    request:
+      requestParams:
+        wardName:
+          type: string
+          m/o: optional
+          description: "조회할 병동 이름"
+        wardCode:
+          type: string
+          m/o: optional
+          description: "조회할 병동 코드"
+    response:
+      success: |
+        병동 목록을 성공적으로 반환합니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "success",
+          data: [ 병동 목록 ]
+        }
+        ```
+      fail: |
+        요청 실패 시 오류 메시지를 반환합니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "요청 실패",
+          data: []
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/finenurse-wy/v1/ward"
+    name: "병동 등록"
+    description: "새로운 병동을 등록합니다."
+    request:
+      requestHeaders:
+        editor:
+          type: string
+          m/o: mandatory
+          description: "수정자 정보"
+      requestBody:
+        wardName:
+          type: string
+          m/o: mandatory
+          description: "병동 이름"
+        wardCode:
+          type: string
+          m/o: optional
+          description: "병동 코드"
+        isValid:
+          type: string
+          m/o: optional
+          description: "병동 유효성 (1: 유효, 0: 무효)"
+    response:
+      success: |
+        병동이 성공적으로 등록되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Ward Creation Success",
+          data: [ 등록된 병동 정보 ]
+        }
+        ```
+      fail: |
+        병동 등록에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Ward Creation Failed",
+          data: {}
+        }
+        ```
+
+  - method: PUT
+    path: "/api/lighten/finenurse-wy/v1/ward"
+    name: "병동 정보 수정"
+    description: "기존 병동 정보를 수정합니다."
+    request:
+      requestHeaders:
+        editor:
+          type: string
+          m/o: mandatory
+          description: "수정자 정보"
+      requestBody:
+        _id:
+          type: string
+          m/o: mandatory
+          description: "병동의 고유 ID"
+        wardName:
+          type: string
+          m/o: optional
+          description: "병동 이름"
+        wardCode:
+          type: string
+          m/o: optional
+          description: "병동 코드"
+        isValid:
+          type: string
+          m/o: optional
+          description: "병동 유효성 (1: 유효, 0: 무효)"
+    response:
+      success: |
+        병동 정보가 성공적으로 수정되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "success",
+          data: [ 수정된 병동 정보 ]
+        }
+        ```
+      fail: |
+        병동 정보 수정에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Ward Update Failed",
+          data: {}
+        }
+        ```
+
+  - method: DELETE
+    path: "/api/lighten/finenurse-wy/v1/ward"
+    name: "병동 삭제"
+    description: "기존 병동을 삭제합니다."
+    request:
+      requestBody:
+        _id:
+          type: string
+          m/o: optional
+          description: "병동의 고유 ID"
+        wardName:
+          type: string
+          m/o: optional
+          description: "병동 이름"
+    response:
+      success: |
+        병동이 성공적으로 삭제되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Ward Deleted",
+          data: {}
+        }
+        ```
+      fail: |
+        병동 삭제에 실패한 경우 반환됩니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Ward Delete Failed",
+          data: {}
+        }
+        ```

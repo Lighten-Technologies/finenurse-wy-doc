@@ -1,0 +1,170 @@
+endpoints:
+  - method: POST
+    path: "/api/lighten/fineway/v1/setting"
+    name: "장비 설정값 저장"
+    description: "FineWay 장비의 설정값을 저장합니다."
+    request:
+      requestBody:
+        serial:
+          type: string
+          m/o: mandatory
+          description: "FineWay 장비의 시리얼 번호"
+        name:
+          type: string
+          m/o: optional
+          description: "FineWay 장비의 이름"
+        ward:
+          type: string
+          m/o: optional
+          description: "설치 병동"
+        room:
+          type: string
+          m/o: optional
+          description: "설치 병실"
+        bed:
+          type: string
+          m/o: optional
+          description: "설치된 침대"
+        space:
+          type: string
+          m/o: optional
+          description: "설치된 공간"
+    response:
+      success: |
+        장비 설정값이 성공적으로 저장되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 설정을 성공적으로 저장했습니다.",
+          data: { eqt_path: "장비 경로" }
+        }
+        ```
+      fail: |
+        장비 설정값 저장에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 설정을 저장하지 못했습니다.",
+          data: {}
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/fineway/v1/setting/disconnect"
+    name: "장비 상태 비활성화"
+    description: "FineWay 장비의 상태를 '연결 끊김'으로 변경합니다."
+    request:
+      requestBody:
+        serial:
+          type: string
+          m/o: mandatory
+          description: "FineWay 장비의 시리얼 번호"
+    response:
+      success: |
+        장비 상태가 성공적으로 '연결 끊김'으로 변경되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 상태를 성공적으로 변경했습니다.",
+          data: {}
+        }
+        ```
+      fail: |
+        장비 상태 변경에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 상태 변경에 실패했습니다.",
+          data: {}
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/fineway/v1/setting/equipment"
+    name: "FineWay 장비 목록 등록"
+    description: "FineWay 장비의 목록을 등록합니다."
+    request:
+      requestBody:
+        data:
+          type: array
+          m/o: mandatory
+          description: "FineWay 장비 목록 데이터 배열"
+    response:
+      success: |
+        장비 목록이 성공적으로 등록되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 목록이 성공적으로 등록되었습니다.",
+          data: {}
+        }
+        ```
+      fail: |
+        장비 목록 등록에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 목록 등록에 실패했습니다.",
+          data: {}
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/fineway/v1/setting/delete"
+    name: "FineWay 장비 삭제"
+    description: "FineWay 장비를 삭제합니다."
+    request:
+      requestBody:
+        serial:
+          type: string
+          m/o: mandatory
+          description: "FineWay 장비의 시리얼 번호"
+    response:
+      success: |
+        장비가 성공적으로 삭제되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비가 성공적으로 삭제되었습니다.",
+          data: {}
+        }
+        ```
+      fail: |
+        장비 삭제에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "장비 삭제에 실패했습니다.",
+          data: {}
+        }
+        ```
+
+  - method: POST
+    path: "/api/lighten/fineway/v1/setting/raw"
+    name: "FineWay raw 데이터 처리"
+    description: "FineWay 장비의 raw 데이터를 처리합니다."
+    request:
+      requestBody:
+        raw:
+          type: string
+          m/o: mandatory
+          description: "처리할 raw 데이터"
+    response:
+      success: |
+        raw 데이터가 성공적으로 처리되었습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "raw 데이터가 성공적으로 처리되었습니다.",
+          data: {}
+        }
+        ```
+      fail: |
+        raw 데이터 처리에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "raw 데이터 처리에 실패했습니다.",
+          data: {}
+        }
+        ```

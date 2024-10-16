@@ -234,7 +234,7 @@ endpoints:
     name: "환자 삭제"
     description: "기존 환자를 삭제합니다."
     request:
-      requestBody:
+      requestParams:
         _id:
           type: string
           m/o: optional

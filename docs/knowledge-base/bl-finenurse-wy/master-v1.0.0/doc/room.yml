@@ -144,7 +144,7 @@ endpoints:
     name: "병실 삭제"
     description: "기존 병실을 삭제합니다."
     request:
-      requestBody:
+      requestParams:
         _id:
           type: string
           m/o: optional

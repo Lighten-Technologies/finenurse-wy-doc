@@ -140,7 +140,7 @@ endpoints:
     name: "약물 삭제"
     description: "기존 약물을 삭제합니다."
     request:
-      requestBody:
+      requestParams:
         _id:
           type: string
           m/o: mandatory

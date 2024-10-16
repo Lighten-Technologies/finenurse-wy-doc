@@ -76,7 +76,7 @@ endpoints:
     name: "회원 삭제"
     description: "특정 회원을 삭제합니다."
     request:
-      requestBody:
+      requestParams:
         id:
           type: string
           m/o: mandatory

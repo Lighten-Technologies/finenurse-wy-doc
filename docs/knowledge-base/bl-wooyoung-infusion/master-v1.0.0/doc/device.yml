@@ -182,7 +182,7 @@ endpoints:
     name: "기기 삭제"
     description: "기존 주입 펌프 기기를 삭제합니다."
     request:
-      requestBody:
+      requestParams:
         devSerial:
           type: string
           m/o: mandatory

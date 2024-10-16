@@ -45,6 +45,36 @@ endpoints:
         }
         ```
 
+  - method: GET
+    path: "/api/wooyoungmed/infusionpump/v1/available"
+    name: "사용 가능한 주입 펌프 기기 목록 조회"
+    description: "특정 병동에서 페어링되지 않은 주입 펌프 기기 목록을 조회합니다."
+    request:
+      requestParams:
+        devWard:
+          type: string
+          m/o: optional
+          description: "기기가 배치된 병동"
+    response:
+      success: |
+        사용 가능한 주입 펌프 기기 목록 조회에 성공했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "success",
+          data: [ 기기 목록 ]
+        }
+        ```
+      fail: |
+        기기 목록 조회에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "error",
+          data: {}
+        }
+        ```
+
   - method: POST
     path: "/api/wooyoungmed/infusionpump/v1/device"
     name: "기기 등록"

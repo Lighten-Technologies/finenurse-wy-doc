@@ -1,0 +1,51 @@
+endpoints:
+  - method: GET
+    path: "/api/lighten/finenurse-wy/v1/bed"
+    name: "병동 내 병실의 침대 목록 및 환자 정보 조회"
+    description: "특정 병동의 병실에 있는 침대 목록과 각 침대에 배치된 환자 정보를 조회합니다."
+    request:
+      requestParams:
+        wardName:
+          type: string
+          m/o: mandatory
+          description: "병동 이름"
+        roomName:
+          type: string
+          m/o: mandatory
+          description: "병실 이름"
+    response:
+      success: |
+        병동 내 병실의 침대 목록과 환자 정보를 성공적으로 조회했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "success",
+          data: [
+            {
+              "bedNo": "침대 번호",
+              "patId": {
+                "_id": "환자 ID",
+                "pat_id": "환자 코드",
+                "pat_name": "환자 이름",
+                "pat_ward": "병동",
+                "pat_room": "병실",
+                "pat_bed": "침대",
+                "pat_base_info": {
+                  "pat_age": "환자 나이",
+                  "pat_sex": "환자 성별"
+                }
+              }
+            },
+            ...
+          ]
+        }
+        ```
+      fail: |
+        필수 필드가 누락되었거나 조회에 실패했습니다.
+        ```
+        {
+          responseTime: "YYYY-MM-DD HH:mm:ss",
+          message: "Required All Mandatory Fields",
+          data: {}
+        }
+        ```

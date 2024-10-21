@@ -55,6 +55,10 @@ endpoints:
           type: string
           m/o: optional
           description: "기기가 배치된 병동"
+        devSerial:
+          type: string
+          m/o: optional
+          description: "기기 시리얼 번호"
     response:
       success: |
         사용 가능한 주입 펌프 기기 목록 조회에 성공했습니다.
